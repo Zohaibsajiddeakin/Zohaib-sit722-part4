@@ -18,6 +18,7 @@ jobs:
 
     - name: Push Docker Images
       run: |
+        echo "${{ secrets.DOCKER_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
         chmod +x ./scripts/push-image.sh
         ./scripts/push-image.sh
 
