@@ -6,7 +6,7 @@ services:
       context: ./book_catalog
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"  # Adjust according to your app
+      - "5000:5000"  
     environment:
       - PYTHONPATH=/app
 
@@ -15,7 +15,7 @@ services:
       context: ./inventory_management
       dockerfile: Dockerfile
     ports:
-      - "5001:5000"  # Adjust according to your app
+      - "5001:5000"  
     environment:
       - PYTHONPATH=/app
 
