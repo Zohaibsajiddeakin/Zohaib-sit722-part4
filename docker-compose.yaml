@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  book_catalog:
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"  # Adjust according to your app
+    environment:
+      - PYTHONPATH=/app
+
+  inventory_management:
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"  # Adjust according to your app
+    environment:
+      - PYTHONPATH=/app
+
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      POSTGRES_DB: eightpointwo
+      POSTGRES_USER: eightpointtwo_user
+      POSTGRES_PASSWORD: n4LJFAEpqKxIPqyU8fglv2q8jvBw7M2i
+    ports:
+      - "5432:5432"

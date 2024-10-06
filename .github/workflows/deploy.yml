@@ -1,0 +1,27 @@
+name: Deploy Microservices
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Build Docker Images
+      run: |
+        chmod +x build-image.sh
+        ./build-image.sh
+
+    - name: Push Docker Images
+      run: |
+        chmod +x push-image.sh
+        ./push-image.sh
+
+    - name: Deploy to Kubernetes
+      run: |
+        chmod +x deploy.sh
+        ./deploy.sh

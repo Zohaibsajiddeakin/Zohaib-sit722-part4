@@ -1,1 +1,48 @@
-# Your Solution
+# scripts/kubernetes/deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+      - name: book-catalog
+        image: eightpointtwoo/book_catalog:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: postgresql://eightpointtwo_user:n4LJFAEpqKxIPqyU8fglv2q8jvBw7M2i@dpg-cru3g4lds78s73dukj60-a.oregon-postgres.render.com/eightpointtwo
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-management
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inventory-management
+  template:
+    metadata:
+      labels:
+        app: inventory-management
+    spec:
+      containers:
+      - name: inventory-management
+        image: eightpointtwoo/inventory_management:latest
+        ports:
+        - containerPort: 8001
+        env:
+        - name: DATABASE_URL
+          value: postgresql://eightpointtwo_user:n4LJFAEpqKxIPqyU8fglv2q8jvBw7M2i@dpg-cru3g4lds78s73dukj60-a.oregon-postgres.render.com/eightpointtwo
