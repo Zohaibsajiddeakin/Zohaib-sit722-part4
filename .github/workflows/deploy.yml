@@ -14,14 +14,14 @@ jobs:
     - name: Build Docker Images
       run: |
         chmod +x build-image.sh
-        ./scripts/build-image.sh
+        ././scripts/build-image.sh
 
     - name: Push Docker Images
       run: |
         chmod +x push-image.sh
-        ./scripts/push-image.sh
+        ././scripts/push-image.sh
 
     - name: Deploy to Kubernetes
       run: |
         chmod +x deploy.sh
-        ./scripts/deploy.sh
+        ././scripts/deploy.sh
