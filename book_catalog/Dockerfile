@@ -14,5 +14,4 @@ COPY ./app /app
 # Set environment variable for Python to recognize the app as a package
 ENV PYTHONPATH=/app
 
-# Command to run the app
 CMD ["python", "/app/main.py"]
